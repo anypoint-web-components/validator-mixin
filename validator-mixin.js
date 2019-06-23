@@ -11,7 +11,7 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
 */
-import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
+import { IronMeta } from '@polymer/iron-meta/iron-meta.js';
 
 /**
  * A port of `iron-validator-behavior` that works with any JavaScript class.
@@ -37,7 +37,7 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
  * @param {Class} base
  * @return {Class}
  */
-export const ValidatorMixin = base =>
+export const ValidatorMixin = (base) =>
   class extends base {
     static get properties() {
       return {
@@ -53,7 +53,7 @@ export const ValidatorMixin = base =>
     }
 
     set message(value) {
-      const key = "_message";
+      const key = '_message';
       const old = this[key];
       if (old === value) {
         return;
@@ -61,7 +61,7 @@ export const ValidatorMixin = base =>
       this[key] = value;
       if (this.requestUpdate) {
         // Lit element
-        this.requestUpdate("message", old);
+        this.requestUpdate('message', old);
       }
     }
 
@@ -78,7 +78,7 @@ export const ValidatorMixin = base =>
         key = this.constructor.is;
       }
       new IronMeta({
-        type: "validator",
+        type: 'validator',
         key,
         value: this
       });
