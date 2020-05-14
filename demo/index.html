@@ -93,10 +93,11 @@
   </section>
 
   <script type="module">
-    import { IronMeta } from '../node_modules/@polymer/iron-meta/iron-meta.js';
-    const validator = new IronMeta({
-      type: 'validator'
-    }).byKey('cats-only');
+    import { ValidatorStore } from '../index.js';
+
+    /* eslint-disable no-plusplus */
+
+    const validator = ValidatorStore.get('cats-only');
 
     const Demo = {
       init: () => {
@@ -136,7 +137,7 @@
 
       _onSubmit: (e) => {
         e.preventDefault();
-        let data = {};
+        const data = {};
         for (let el, i = 0, len = e.target.elements.length; i < len; i++) {
           el = e.target.elements[i];
           if (el.name) {

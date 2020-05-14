@@ -1,23 +1,24 @@
 [![Published on NPM](https://img.shields.io/npm/v/@anypoint-web-components/validator-mixin.svg)](https://www.npmjs.com/package/@anypoint-web-components/validator-mixin)
 
-[![Build Status](https://travis-ci.org/anypoint-web-components/validator-mixin.svg?branch=stage)](https://travis-ci.org/anypoint-web-components/validator-mixin)
+[![Build Status](https://travis-ci.com/anypoint-web-components/validator-mixin.svg)](https://travis-ci.com/anypoint-web-components/validator-mixin)
 
 # ValidatorMixin
 
-A port of `iron-validator-behavior` that works with any JavaScript class.
+Use `ValidatorMixin` to implement a custom input/form validator. Element instances implementing this mixin will be registered for use in elements that implement `ValidatableMixin`.
 
-To be used with Polymer 3, LitElement and low level web components.
+## Installation
 
-Use `ValidatorMixin` to implement a custom input/form validator.
+```bash
+npm i @anypoint-web-components/validator-mixin --save
+```
 
-Element instances implementing this mixin will be registered for use
-in elements that implement `ValidatableMixin`.
+## Usage
 
-## Validator name
+### Validator name
 
 By default it takes lower case name of current HTML element. If this class
 is used outside custom elements environment then it uses static `is` property
-to get the name of the validator.
+to get the name of the mixin.
 
 ```javascript
 static get is() {
@@ -25,17 +26,22 @@ static get is() {
 }
 ```
 
-## Installation
+### Deregistering validator
 
-```bash
-npm i @anypoint-web-components/validator-mixin
-```
+When an instance of a validator is created it is being stored in a global validators cache
+controlled by the `ValidatorStore` module.
 
-## Usage
+After registering the validator in the global store it is not tied to component's life cycle methods (it can extend an Object instead of HTMLElement). Also, usually validator stays in the document for the entire life cycle of the web app. But if you need to unregister the validator then call `instance.unregister()` function
+and detach this element from the DOM or remove references to the object so it can be GC'd.
+
+You can also do this by calling `ValidatorStore.unregister(instance)`.
+
+
+### In a LitElement
 
 ```javascript
 import { LitElement } from 'lit-element';
-import { ValidatorMixin } from '@anypoint-web-components/validator-mixin/validator-mixin.js';
+import { ValidatorMixin } from '@anypoint-web-components/validator-mixin';
 
 class CatsOnly extends ValidatorMixin(LitElement) {
   validateObject(obj) {
@@ -59,16 +65,20 @@ class CatsOnly extends ValidatorMixin(LitElement) {
 window.customElements.define('cats-only', CatsOnly);
 ```
 
-## Testing
-```bash
+## Development
+
+```sh
+git clone https://github.com/anypoint-web-components/validator-mixin
+cd validator-mixin
+npm install
+```
+
+### Testing
+```sh
 npm test
 ```
 
-## Demo
-```bash
+### Demo
+```sh
 npm start
 ```
-
-### API components
-
-This components is a part of [API components ecosystem](https://elements.advancedrestclient.com/)

@@ -2,7 +2,7 @@
 const { createDefaultConfig } = require('@open-wc/testing-karma');
 const merge = require('deepmerge');
 
-module.exports = (config) => {
+module.exports = config => {
   config.set(
     merge(createDefaultConfig(config), {
       files: [
@@ -13,35 +13,32 @@ module.exports = (config) => {
         // npm run test -- --grep test/bar/*
         {
           pattern: config.grep ? config.grep : 'test/**/*.test.js',
-          type: 'module'
+          type: 'module',
         },
-        {
-          pattern: require.resolve('chai/chai.js')
-        }
       ],
 
       // see the karma-esm docs for all options
       esm: {
         // if you are using 'bare module imports' you will need this option
-        nodeResolve: true
+        nodeResolve: true,
       },
 
-      client: {
-        mocha: {
-          timeout: 2000
-        }
-      },
-
-      coverageIstanbulReporter: {
-        thresholds: {
-          global: {
-            statements: 80,
-            branches: 80,
-            functions: 90,
-            lines: 80
-          }
-        }
-      },
+      // client: {
+      //   mocha: {
+      //     timeout: 2000
+      //   }
+      // },
+      //
+      // coverageIstanbulReporter: {
+      //   thresholds: {
+      //     global: {
+      //       statements: 80,
+      //       branches: 80,
+      //       functions: 90,
+      //       lines: 80
+      //     }
+      //   }
+      // },
     })
   );
   return config;
