@@ -40,9 +40,10 @@ interface ValidatorMixin {
   /**
    * Implement custom validation logic in this function.
    *
-   * @return {boolean} true if `values` is valid.
+   * @param value A value to validate
+   * @returns `true` if `values` is valid.
    */
-  validate(): boolean;
+  validate(value?: any): boolean;
 }
 
 export {ValidatorMixinConstructor};
