@@ -1,10 +1,10 @@
-[![Published on NPM](https://img.shields.io/npm/v/@anypoint-web-components/validator-mixin.svg)](https://www.npmjs.com/package/@anypoint-web-components/validator-mixin)
-
-[![Build Status](https://travis-ci.com/anypoint-web-components/validator-mixin.svg)](https://travis-ci.com/anypoint-web-components/validator-mixin)
-
 # ValidatorMixin
 
 Use `ValidatorMixin` to implement a custom input/form validator. Element instances implementing this mixin will be registered for use in elements that implement `ValidatableMixin`.
+
+[![Published on NPM](https://img.shields.io/npm/v/@anypoint-web-components/validator-mixin.svg)](https://www.npmjs.com/package/@anypoint-web-components/validator-mixin)
+
+[![tests](https://github.com/anypoint-web-components/validator-mixin/actions/workflows/tests.yml/badge.svg)](https://github.com/anypoint-web-components/validator-mixin/actions/workflows/tests.yml)
 
 ## Installation
 
@@ -31,7 +31,7 @@ static get is() {
 When an instance of a validator is created it is being stored in a global validators cache
 controlled by the `ValidatorStore` module.
 
-After registering the validator in the global store it is not tied to component's life cycle methods (it can extend an Object instead of HTMLElement). Also, usually validator stays in the document for the entire life cycle of the web app. But if you need to unregister the validator then call `instance.unregister()` function
+After registering the validator in the global store it is not tied to component's life cycle methods (it can extend an Object instead of HTMLElement). Also, usually validator stays in the document for the entire life cycle of the web app. But if you need to un-register the validator then call `instance.unregister()` function
 and detach this element from the DOM or remove references to the object so it can be GC'd.
 
 You can also do this by calling `ValidatorStore.unregister(instance)`.
@@ -74,11 +74,13 @@ npm install
 ```
 
 ### Testing
+
 ```sh
 npm test
 ```
 
 ### Demo
+
 ```sh
 npm start
 ```
