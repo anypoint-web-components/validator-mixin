@@ -23,6 +23,7 @@ interface ValidatorMixinConstructor {
 interface ValidatorMixin {
   /**
    * Validation message for invalid state
+   * @attribute
    */
   message: string;
 
