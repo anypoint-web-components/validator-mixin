@@ -1,4 +1,8 @@
-# ValidatorMixin
+# Deprecated
+
+This component has been moved to `anypoint-web-components/awc`.
+
+-----
 
 Use `ValidatorMixin` to implement a custom input/form validator. Element instances implementing this mixin will be registered for use in elements that implement `ValidatableMixin`.
 
